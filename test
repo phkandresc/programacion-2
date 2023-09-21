@@ -1,0 +1,8 @@
+# 0 "/home/kevincoraizaca/Documents/programacion-2/test.c"
+# 1 "/home/kevincoraizaca/Documents/programacion-2//"
+# 0 "<built-in>"
+# 0 "<command-line>"
+# 1 "/home/kevincoraizaca/Documents/programacion-2/test.c"
+int main(){
+    printf("Hello");
+}
