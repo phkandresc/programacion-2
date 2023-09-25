@@ -1,43 +1,42 @@
-/*
-Kevin Coraizaca
-Programa que calcula la pendiente de una recta dados dos puntos
-*/
+
 #include <stdio.h>
 #include <math.h>
 
-int main(){
-    float vprod, vprodpagado,billetes20, billetes10, billetes5;
-    int vuelto;
+int main()
+{
+    float vprod, vprodpagado, vuelto;
+    float denominacionDolar[9] = {20, 10, 5, 1, 0.50, 0.25, 0.10, 0.05, 0.01};
+    float cantidadporDenominacion[9] = {0, 0, 0, 0, 0, 0, 0, 0, 0};
 
     printf("Ingrese el valor a pagar por el cliente:\n");
     scanf("%f", &vprod);
     printf("Ingrese el valor pagado por el cliente:\n");
     scanf("%f", &vprodpagado);
 
-if (vprodpagado==vprod){
+    if (vprodpagado==vprod)
+    {
         printf("Pago realizado con exito, sin vuelto\n");
-}
+    }
 
-if (vprodpagado>vprod)
-{
-   //calcular vuelto
-   vuelto = vprodpagado-vprod;
-   printf("Debe entregar un cambio de: $%i\n", vuelto);
-   //billetes 20
-   billetes20=(vuelto-(vuelto%20))/20;
-   printf("Billetes de $20 a dar: %.0f\n", billetes20);
-   vuelto=vuelto%20;
-   //billetes 10
-   billetes10=(vuelto-(vuelto%10))/10;
-   printf("Billetes de $10 a dar: %.0f\n", billetes10);
-   vuelto=vuelto%10;
-   //billetes 5
-   billetes5=(vuelto-(vuelto%5))/5;
-   printf("Billetes de $5 a dar: %.0f\n", billetes5);
-   vuelto=vuelto%5;
-   //monedas de 1=vuelto
-   printf("Monedas de $1 a dar: %i\n", vuelto);
-}else{
-    printf("Pago Insuficiente\n");
-}
+    if (vprodpagado > vprod){
+        // calcular vuelto
+        vuelto = vprodpagado-vprod;
+        vuelto = floor(vuelto*100)/100;
+        printf("Debe entregar un cambio de: $%f\n", vuelto);
+        // billetes
+        for (int i = 0; i<9; i++)
+        {
+            while (vuelto>=denominacionDolar[i])
+            {
+                vuelto=vuelto-denominacionDolar[i];
+                printf("el vuelto es: %f\n", vuelto);
+                cantidadporDenominacion[i]++;
+            }
+            printf("Billetes de %.2f\t Cantidad %.0f\n", denominacionDolar[i], cantidadporDenominacion[i]);
+        }
+    }
+    else
+    {
+        printf("Pago Insuficiente\n");
+    }
 }
