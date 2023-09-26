@@ -1,12 +1,11 @@
 #include <stdio.h>
 #include <math.h>
 double denominacionDolar[9] = {20, 10, 5, 1, 0.50, 0.25, 0.10, 0.05, 0.01};
-double cantidadporDenominacion[9] = {0, 0, 0, 0, 0, 0, 0, 0, 0};
+double cantidadporDenominacion[9] = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
 
 int main()
 {
-    double vprod, vprodpagado;
-    double vuelto;
+    double vprod, vprodpagado, vuelto;
 
     printf("Ingrese el valor a pagar por el cliente:\n");
     scanf("%lf", &vprod);
@@ -22,7 +21,7 @@ int main()
     {
         // Calcular vuelto
         vuelto = vprodpagado - vprod;
-        printf("Debe entregar un cambio de: %f\n", vuelto);
+        printf("Debe entregar un cambio de: %.2f\n", vuelto);
 
         // Vuelto segun denominaciones
         for (int i = 0; i < 9; i++)
@@ -32,6 +31,7 @@ int main()
                 vuelto = vuelto - denominacionDolar[i];
                 cantidadporDenominacion[i]++;
             }
+            printf("Denominacion: %4f\t Cantidad: %.0f\n", denominacionDolar[i], cantidadporDenominacion[i]);
         }
     }
     else
@@ -39,8 +39,3 @@ int main()
         printf("Pago insuficiente\n");
     }
 }
-
-/*            for (int j = 0; cantidadporDenominacion[j] > 0 && j < 9; j++)
-            {
-                printf("Billetes de %.0f\t Cantidad: %.0f\n", denominacionDolar[j], cantidadporDenominacion[j]);
-            }*/
