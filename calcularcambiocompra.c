@@ -16,7 +16,7 @@ int main()
     {
         printf("Pago realizado con exito, sin vuelto\n");
     }
-
+    
     if (vprodpagado > vprod)
     {
         // Calcular vuelto

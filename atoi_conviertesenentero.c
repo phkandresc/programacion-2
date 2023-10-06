@@ -5,7 +5,7 @@ void get_line(char s[], int maxline);
 int main()
 {
     char s[10] = {'0', '2', '0', '0', '5'};
-    printf("Numero en entero int %i", atoi(s));
+    printf("Numero en entero int %i\n", atoi(s));
 }
 
 int atoi(char s[])
