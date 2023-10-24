@@ -1,0 +1,69 @@
+Una estructura es una coleccion de una o mas variables, de tipos posiblemente
+diferentes, agrupadas bajo un solo nombre. Las estructuras ayudan a organizar
+datos complicados
+
+Un ejemplo de estructura puede ser un punto en el plano xy.
+Este punto tiene una coordenada x y una coordenada y.
+Entonces se puede declarar una estructura
+struct point{
+    int x;
+    int y;
+};
+
+Las variables nombradas dentro de la estructura se llaman miembros.
+
+La estructura de puede definir de la siguiente forma:
+
+struct ponit pt; //define una variable pt que es una estructura de tipo struct point
+
+Una estructura se puede inicializar al seguir su definicion con una lista de iniciali
+zadores 
+
+struct point pt = {320,200}
+
+Se puede hacer referencia a un miembro de una estructura usando "."
+Que conecta el nombre de la estructura con el nombre del miembro.
+
+printf("%d, %d", pt.x, pt.y);
+
+Las estructuras pueden anidarse, es decir, una estructura puede contener estructuras.
+Por ejemplo:
+
+struct rect{
+    struct point pt1;
+    struct point pt2;
+}
+
+Declaramos screen como struct rect
+
+struct rect screen;
+
+Entonces podemos acceder a los miembros de la siguiente forma
+
+screen.pt1.x
+
+Estariamos accediendo a la estructura rect, luego a la estructura pt1 y a su vez al
+miembro x de pt1.
+
+Apuntadores a estructura
+
+struct point *pp;
+
+pp es un apuntador a una estructura de tipo struct point.
+
+Si pp apunta a una estructura entonces.
+
+*pp es la estructura, (*pp).x y (*pp).y son los miembros.
+
+Ejemplo de uso de un puntero a una estructura:
+
+struct point origin, *pp;
+pp =&origin;
+printf ("el origen es (%d,%d)\n", (*pp).x, (*pp).y);
+
+Si pp es un puntero a una estructura se puede usar la siguiente notacion
+p->x
+p->y
+p->miembro de estructura
+
+printf ("el origen es (%d,%d)\n", pp->x, pp->y);
