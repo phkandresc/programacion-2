@@ -8,6 +8,7 @@ como un tipo de dato
 Un nodo debe tener un valor, y un puntero hacia un dato tipo nodo, para asi
 ir enlazando y crear una lista ligada.
 
+
 */
 
 // ESTRUCTURA TIPO NODO
