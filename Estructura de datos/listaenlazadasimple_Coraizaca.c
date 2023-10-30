@@ -53,7 +53,7 @@ int main(){
                 printf("Ha seleccionado la opcion 3.\n");
                 if (head==NULL){
                 	printf("ERROR: Primero ingrese datos a la lista ligada\n");
-				}else head = buscarNodo(head);
+				}else buscarNodo(head);
                 break;
             case 4:
                 printf("Ha seleccionado la opcion 4.\n");
@@ -163,14 +163,23 @@ nodo *buscarNodo(nodo *head){
     {
         if(actual->valor==val_buscar){
         	printf("Nodo encontrado\n");
+        	printf("[%d]\n", actual->valor);
         	flag=1;
-		}
-		actual=actual->sig;
+        	return actual;
+		}else actual=actual->sig;
     }
+    printf("[%d]", actual->valor);
     if(flag==0){
     	printf("Nodo no encontrado\n");
+    	return head;
 	}
-    return head;
 }
 
+nodo *eliminarNodo(nodo *head){
+	nodo *actual = head;
+	nodo *buscar = buscarNodo(head);
+	while(actual->sig!=NULL){
+		return head;
+	}
+}
 
