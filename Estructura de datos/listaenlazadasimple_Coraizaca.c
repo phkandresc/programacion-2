@@ -32,11 +32,11 @@ int main(){
         if (scanf("%d", &opcion) != 1)
         {
             printf("Error: Ingrese un numero valido.\n");
-            while (getchar() != '\n'); // Limpia el búfer de entrada
+            while (getchar() != '\n'); // Limpia el bÃºfer de entrada
         }
         else
         {
-            while (getchar() != '\n'); // Limpia el búfer de entrada
+            while (getchar() != '\n'); // Limpia el bÃºfer de entrada
             switch (opcion)
             {
             case 1:
@@ -74,9 +74,9 @@ nodo *ingresarDatos(nodo *head){
 		if (scanf("%d", &i) != 1)
     	{
 	        printf("Error: Ingrese un numero valido.\n");
-	        while (getchar() != '\n'); // Limpia el búfer de entrada
+	        while (getchar() != '\n'); // Limpia el bÃºfer de entrada
    		}else{
-	    	while (getchar() != '\n'); // Limpia el búfer de entrada
+	    	while (getchar() != '\n'); // Limpia el bÃºfer de entrada
 	    	head = insertarFinal(head, i);
 		}
 	}
@@ -153,17 +153,24 @@ void limpiarLista(nodo *head){
 }
 
 nodo *buscarNodo(nodo *head){
-	int val_buscar;
+	int val_buscar, flag;
+	flag=0;
 	printf("Cual es valor que desea buscar: ");
 	scanf("%d", &val_buscar);
 	printf("\n");
 	nodo *actual = head;
-	while (actual->sig!=NULL)
+	while (actual->sig!=NULL && flag==0)
     {
         if(actual->valor==val_buscar){
         	printf("Nodo encontrado\n");
+        	flag=1;
 		}
 		actual=actual->sig;
     }
+    if(flag==0){
+    	printf("Nodo no encontrado\n");
+	}
     return head;
 }
+
+
