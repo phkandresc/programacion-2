@@ -17,6 +17,12 @@ node *findParent(node *root, int value);
 bool delete(node **root, int value);
 node *findNode(node *root, int value);
 int numberNodes(node *root);
+int findMin(node *root);
+
+int findMax(node *root);
+void preorder(node *root);
+void postOrder(node *root);
+void inOrder(node *root);
 
 int main()
 {
@@ -25,23 +31,20 @@ int main()
     Se "inicializa el arbol"
     */
     node *root = NULL;
+
     insert(&root, 23);
     insert(&root, 31);
     insert(&root, 14);
-    insert(&root, 17);
     insert(&root, 7);
     insert(&root, 9);
-    printf("Arbol ingresado\n");
-    bool located = contains(root, 1);
-    if (!delete (&root, 22))
-    {
-        printf("no se ha podido eliminar el nodo\n");
-    }
-    else
-    {
-        printf("se ha eliminado el nodo\n");
-    }
+    insert(&root, 17);
 
+    printf("PreOrder\n");
+    preorder(root);
+    printf("\n PostOrder \n");
+    postOrder(root);
+    printf("\n InOrder \n");
+    inOrder(root);
     system("pause");
     return 0;
 }
@@ -254,5 +257,69 @@ int numberNodes(node *root)
 
         // Sumar el nodo actual y los nodos en los subárboles
         return 1 + left + right;
+    }
+}
+
+int findMin(node *root)
+{
+    if (root->l == NULL)
+    {
+        return root->val;
+    }
+    findMin(root->l);
+}
+
+int findMax(node *root)
+{
+    if (root->r == NULL)
+    {
+        return root->val;
+    }
+    findMax(root->r);
+}
+
+/*
+Preorder
+Primero root
+Left subtree
+Right subtree
+*/
+void preorder(node *root)
+{
+    if (root != NULL)
+    {
+        printf("%d ", root->val);
+        preorder(root->l);
+        preorder(root->r);
+    }
+}
+
+/*
+PostOrder
+left subtree
+right subtree
+Root
+*/
+void postOrder(node *root)
+{
+    if (root != NULL)
+    {
+        postOrder(root->l);
+        postOrder(root->r);
+        printf("%d ", root->val);
+    }
+}
+/*
+InOrder
+Recorre el arbol
+Subarbol izquierdo, raiz, subarbol derecho
+*/
+void inOrder(node *root)
+{
+    if (root != NULL)
+    {
+        inOrder(root->l);
+        printf("%d ", root->val);
+        inOrder(root->r);
     }
 }
